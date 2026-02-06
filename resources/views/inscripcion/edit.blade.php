@@ -8,6 +8,8 @@
 
 @endif
 
+<link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+
 <label>Alumno</label>
 <select name="alumno" required>
     @foreach($alumnos as $a)

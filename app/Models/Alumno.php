@@ -13,10 +13,9 @@ class Alumno extends Model
 
     protected $fillable = [
         'codigo',
-        'cedula',
         'nombre',
-        'apellido',
-        'correo',
+        'direccion',
+        'pension',
         'carrera'
     ];
 

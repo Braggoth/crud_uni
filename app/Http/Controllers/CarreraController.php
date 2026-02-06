@@ -51,10 +51,17 @@ class CarreraController extends Controller
 
         return redirect()->route('carrera.index')->with('success', 'Carrera actualizada');
     }
-
     public function destroy($codigo)
     {
+        $mallas = \DB::table('malla')->where('carrera', $codigo)->count();
+
+        if ($mallas > 0) {
+            return redirect()->route('carrera.index')
+                            ->with('error', 'No se puede eliminar la carrera porque tiene mallas registradas.');
+        }
         Carrera::destroy($codigo);
+
         return redirect()->route('carrera.index')->with('success', 'Carrera eliminada');
     }
+
 }

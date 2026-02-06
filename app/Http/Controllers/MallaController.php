@@ -65,12 +65,24 @@ class MallaController extends Controller
     }
 
     public function destroy($facultad, $carrera, $codigo)
-    {
-        Malla::where('facultad', $facultad)
-             ->where('carrera', $carrera)
-             ->where('codigo', $codigo)
-             ->delete();
+{
+    $materias = \DB::table('materia')
+                    ->where('facultad', $facultad)
+                    ->where('carrera', $carrera)
+                    ->where('malla', $codigo)
+                    ->count();
 
-        return redirect()->route('malla.index')->with('success', 'Malla eliminada');
+    if ($materias > 0) {
+        return redirect()->route('malla.index')
+                         ->with('error', 'No se puede eliminar la malla porque tiene materias registradas.');
     }
+
+    Malla::where('facultad', $facultad)
+         ->where('carrera', $carrera)
+         ->where('codigo', $codigo)
+         ->delete();
+
+    return redirect()->route('malla.index')->with('success', 'Malla eliminada');
+}
+
 }

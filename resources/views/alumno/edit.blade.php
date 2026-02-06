@@ -1,32 +1,36 @@
-<link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
-<h1>Editar Alumno</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+        <a href="{{ route('dashboard') }}" style="text-decoration:none; font-size:20px; margin-right:15px;">INICIO</a>
+
+    <title>Editar Alumno</title>
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Editar Alumno</h1>
+</header>
 
 <form method="POST" action="{{ route('alumno.update', $alumno->codigo) }}">
-@csrf @method('PUT')
+    @csrf
+    @method('PUT')
 
-Código
-<input type="number" value="{{ $alumno->codigo }}" disabled>
+    <label>Nombre</label>
+    <input type="text" name="nombre" value="{{ $alumno->nombre }}" required>
 
-Cédula
-<input type="text" name="cedula" value="{{ $alumno->cedula }}" required>
+    <label>Código</label>
+    <input type="number" name="codigo" value="{{ $alumno->codigo }}" required>
 
-Nombre
-<input type="text" name="nombre" value="{{ $alumno->nombre }}" required>
+    <label>Dirección</label>
+    <input type="text" name="direccion" value="{{ $alumno->direccion }}" required>
 
-Apellido
-<input type="text" name="apellido" value="{{ $alumno->apellido }}" required>
+    <label>Pensión</label>
+    <input type="number" name="pension" value="{{ $alumno->pension }}" required>
 
-Correo
-<input type="email" name="correo" value="{{ $alumno->correo }}" required>
-
-Carrera
-<select name="carrera" required>
-    @foreach($carreras as $c)
-        <option value="{{ $c->codigo }}" {{ $alumno->carrera == $c->codigo ? 'selected' : '' }}>
-            {{ $c->nombre }}
-        </option>
-    @endforeach
-</select>
-
-<button>Actualizar</button>
+    <button type="submit">Actualizar</button>
 </form>
+
+</body>
+</html>

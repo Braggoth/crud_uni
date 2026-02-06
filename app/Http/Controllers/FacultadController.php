@@ -21,11 +21,11 @@ class FacultadController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'codigo' => 'required|integer|unique:facultad,codigo',
             'nombre' => 'required|string|max:50'
         ]);
 
         Facultad::create($request->all());
+
         return redirect()->route('facultad.index')->with('success', 'Facultad creada');
     }
 
@@ -49,7 +49,27 @@ class FacultadController extends Controller
 
     public function destroy($codigo)
     {
+        // Verificar si hay carreras asociadas
+        $carreras = \DB::table('carrera')->where('facultad', $codigo)->count();
+
+        if ($carreras > 0) {
+            return redirect()->route('facultad.index')
+                            ->with('error', 'No se puede eliminar la facultad porque tiene carreras asociadas.');
+        }
+
+        // Verificar si hay mallas asociadas
+        $mallas = \DB::table('malla')->where('facultad', $codigo)->count();
+
+        if ($mallas > 0) {
+            return redirect()->route('facultad.index')
+                            ->with('error', 'No se puede eliminar la facultad porque tiene mallas asociadas.');
+        }
+
         Facultad::destroy($codigo);
+
         return redirect()->route('facultad.index')->with('success', 'Facultad eliminada');
     }
+
+
+
 }
