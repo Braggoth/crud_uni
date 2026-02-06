@@ -1,0 +1,121 @@
+/* ====== PALETA GLOBAL ====== */
+:root {
+    --fondo: #fffbf5;      /* Blanco cálido */
+    --primario: #e07a5f;   /* Naranja */
+    --secundario: #81b29a; /* Verde */
+    --acento: #f2cc8f;     /* Amarillo suave */
+    --texto: #2d3436;      /* Gris oscuro */
+}
+
+/* ====== GENERAL ====== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', Helvetica, sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primario);
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ====== LINKS ====== */
+a {
+    text-decoration: none;
+    color: var(--fondo);
+    background-color: var(--secundario);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a:hover {
+    background-color: var(--primario);
+    color: var(--fondo);
+}
+
+/* ====== TABLAS ====== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--fondo);
+    color: var(--texto);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    margin-top: 20px;
+}
+
+th {
+    background-color: var(--primario);
+    color: var(--fondo);
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: var(--acento);
+}
+
+/* ====== FORMULARIOS ====== */
+form {
+    margin-top: 20px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 16px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primario);
+    box-shadow: 0 0 6px rgba(224,122,95,0.3);
+}
+
+/* ====== BOTONES ====== */
+button {
+    background-color: var(--primario);
+    color: var(--fondo);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--secundario);
+    transform: translateY(-2px);
+}
+
+/* ====== ALERTAS ====== */
+.alert {
+    background-color: var(--secundario);
+    color: var(--fondo);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+}

@@ -1,0 +1,76 @@
+:root {
+    --fondo: #fffbf5;
+    --primario: #e07a5f;
+    --secundario: #81b29a;
+    --acento: #f2cc8f;
+    --texto: #2d3436;
+}
+
+/* ====== GENERAL ====== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', Helvetica, sans-serif;
+    background: linear-gradient(135deg, var(--primario), var(--secundario));
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--texto);
+}
+
+/* ====== CONTENEDOR PRINCIPAL ====== */
+.dashboard-container {
+    background-color: var(--fondo);
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    text-align: center;
+    max-width: 1000px;
+    width: 95%;
+}
+
+/* ====== TITULO ====== */
+.titulo {
+    color: var(--primario);
+    margin-bottom: 40px;
+    font-size: 36px; /* más grande */
+    font-weight: 700;
+}
+
+/* ====== GRID DE MODULOS ====== */
+.grid-modulos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    grid-template-rows: repeat(2, auto);   /* 2 filas */
+    gap: 25px;
+    justify-items: center;
+    align-items: stretch;
+}
+
+/* ====== TARJETAS ====== */
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secundario);
+    color: var(--fondo);
+    padding: 30px;
+    border-radius: 14px;
+    font-size: 20px; /* más grande */
+    font-weight: 600;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    width: 100%;
+    min-width: 140px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background-color: var(--primario);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}

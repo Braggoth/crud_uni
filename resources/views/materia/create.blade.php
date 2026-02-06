@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+<h1>Nueva Materia</h1>
+
+<form method="POST" action="{{ route('materia.store') }}">
+@csrf
+
+Código
+<input type="number" name="codigo" required>
+
+Nombre
+<input type="text" name="nombre" required>
+
+Facultad
+<select name="facultad" required>
+@foreach($facultades as $f)
+<option value="{{ $f->codigo }}">{{ $f->nombre }}</option>
+@endforeach
+</select>
+
+Carrera
+<select name="carrera" required>
+@foreach($carreras as $c)
+<option value="{{ $c->codigo }}">{{ $c->nombre }}</option>
+@endforeach
+</select>
+
+Malla
+<select name="malla" required>
+@foreach($mallas as $m)
+<option value="{{ $m->codigo }}">{{ $m->nombre }}</option>
+@endforeach
+</select>
+
+<button>Guardar</button>
+</form>
